@@ -21,7 +21,11 @@
 #endif
 
 		fit {
+#ifdef CONFIG_SPL_OPENSBI
 			description = "Configuration to load OpenSBI before U-Boot";
+#else
+			description = "Configuration to U-Boot / OS";
+#endif
 			#address-cells = <2>;
 			fit,fdt-list = "of-list";
 
@@ -54,6 +58,7 @@
 				};
 #endif
 
+#ifdef CONFIG_SPL_OPENSBI
 				opensbi {
 					description = "OpenSBI fw_dynamic Firmware";
 					type = "firmware";
@@ -68,6 +73,7 @@
 						missing-msg = "opensbi";
 					};
 				};
+#endif				
 
 #ifndef CONFIG_OF_BOARD
 				@fdt-SEQ {
