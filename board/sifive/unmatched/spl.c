@@ -175,6 +175,9 @@ u32 spl_boot_device(void)
 	u32 mode_select = readl((void *)MODE_SELECT_REG);
 	u32 boot_device = mode_select & MODE_SELECT_MASK;
 
+	// return BOOT_DEVICE_RAM;
+	return BOOT_DEVICE_UART;
+
 	switch (boot_device) {
 	case MODE_SELECT_SPI:
 		return BOOT_DEVICE_SPI;
